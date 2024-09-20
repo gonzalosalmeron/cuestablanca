@@ -24,11 +24,11 @@ export default function DataFrecuence({ originalData, setNewData }: any) {
         Frecuencia datos:
         <select
           className='min-w-[180px]'
+          defaultValue={frecuency}
           onChange={(e) =>
             setFrecuency(e.target.value as keyof typeof frecuences)
           }
         >
-          <option hidden>Selecciona</option>
           {Object.entries(frecuences).map(([key, value]) => (
             <option key={key} value={key}>
               {value}
