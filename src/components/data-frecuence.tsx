@@ -49,7 +49,7 @@ const groupByFrequency = (data: Record<string, any>[], frequency: string) => {
         `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} ${d.getHours()}:${Math.floor(d.getMinutes() / 15) * 15}`,
       day: (d: Date) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
       week: (d: Date) =>
-        `${d.getFullYear()}-${d.getMonth() + 1}-W${Math.ceil(d.getDate() / 7)}`,
+        `${d.getFullYear()}-${d.getMonth() + 1}-${Math.ceil(d.getDate() / 7) + 1}`,
       month: (d: Date) => `${d.getFullYear()}-${d.getMonth() + 1}`,
       annual: (d: Date) => `${d.getFullYear()}`,
       default: (d: Date) =>
