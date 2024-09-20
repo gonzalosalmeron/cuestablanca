@@ -40,6 +40,20 @@ export default function DataFrecuence({ originalData, setNewData }: any) {
   )
 }
 
+const getISOWeekNumber = (date: Date) => {
+  const firstJan = new Date(date.getFullYear(), 0, 1)
+  const daysOffset = (firstJan.getDay() + 6) % 7
+  const firstThursday = new Date(
+    firstJan.getFullYear(),
+    0,
+    1 + (4 - daysOffset)
+  )
+  const weekNumber = Math.ceil(
+    ((date.getTime() - firstThursday.getTime()) / 86400000 + 1) / 7
+  )
+  return weekNumber
+}
+
 const groupByFrequency = (data: Record<string, any>[], frequency: string) => {
   try {
     const groupedData: Record<string, Record<any, number>> = {}
@@ -47,10 +61,23 @@ const groupByFrequency = (data: Record<string, any>[], frequency: string) => {
     const formatters: Record<string, (date: Date) => string> = {
       quarter: (d: Date) =>
         `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()} ${d.getHours()}:${Math.floor(d.getMinutes() / 15) * 15}`,
-      day: (d: Date) => `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
-      week: (d: Date) =>
-        `${d.getFullYear()}-${d.getMonth() + 1}-${Math.ceil(d.getDate() / 7) + 1}`,
-      month: (d: Date) => `${d.getFullYear()}-${d.getMonth() + 1}`,
+      day: (d: Date) =>
+        `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`,
+      week: (d: Date) => {
+        const year = d.getFullYear()
+        const weekNumber = getISOWeekNumber(d)
+
+        const firstDayOfWeek = new Date(year, 0, 1 + (weekNumber - 1) * 7)
+        const dayOfWeek = firstDayOfWeek.getDay()
+        const daysToAdd = dayOfWeek === 0 ? 1 : -dayOfWeek + 1
+        firstDayOfWeek.setDate(firstDayOfWeek.getDate() + daysToAdd)
+
+        const formattedDate = `${firstDayOfWeek.getFullYear()}-${String(firstDayOfWeek.getMonth() + 1).padStart(2, '0')}-${String(firstDayOfWeek.getDate()).padStart(2, '0')}`
+
+        return formattedDate
+      },
+      month: (d: Date) =>
+        `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`,
       annual: (d: Date) => `${d.getFullYear()}`,
       default: (d: Date) =>
         `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
