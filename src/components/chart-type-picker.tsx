@@ -16,9 +16,12 @@ export default function ChartTypePicker({
   return (
     <label>
       Gráfico:
-      <select onChange={(e: any) => setChartType(e.target.value)}>
+      <select
+        defaultValue={chartType}
+        onChange={(e: any) => setChartType(e.target.value)}
+      >
         {Object.entries(ChartOptions).map(([key, value]) => (
-          <option key={key} value={key} defaultValue={chartType}>
+          <option key={key} value={key}>
             {value}
           </option>
         ))}
