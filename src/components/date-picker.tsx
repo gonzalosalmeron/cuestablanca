@@ -1,7 +1,15 @@
-export default function DatePicker({ dates, setDates }: any) {
+import { SetStateAction } from 'react'
+
+export default function DatePicker({
+  dates,
+  setDates,
+}: {
+  dates: Dates
+  setDates: React.Dispatch<SetStateAction<Dates>>
+}) {
   return (
     <div className='flex gap-6'>
-      <label className='flex flex-col text-sm text-gray-600'>
+      <label>
         Desde
         <input
           type='date'
@@ -11,10 +19,9 @@ export default function DatePicker({ dates, setDates }: any) {
             setDates((old: Dates) => ({ ...old, from: e.target.value }))
           }
           max={dates?.to || new Date().toISOString().split('T')[0]}
-          className='border px-3 py-2 text-[15px] text-zinc-900 outline-none'
         />
       </label>
-      <label className='flex flex-col text-sm text-gray-600'>
+      <label>
         Hasta
         <input
           type='date'
@@ -25,7 +32,6 @@ export default function DatePicker({ dates, setDates }: any) {
           min={dates?.from}
           max={new Date().toISOString().split('T')[0]}
           placeholder='Desde'
-          className='border px-3 py-2 text-[15px] text-zinc-900 outline-none'
         />
       </label>
     </div>
