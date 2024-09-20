@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+label {
+  @apply flex flex-col text-sm text-gray-600;
+}
+
+input,
+select {
+  @apply mt-1 h-10 border px-3 text-[15px] text-zinc-900 outline-none;
+}
