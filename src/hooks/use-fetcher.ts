@@ -13,7 +13,6 @@ export default function useFetcher(key: string | null) {
     setLoading(true)
     setError(null)
     const cache = sessionStorage.getItem(key)
-    console.log(cache)
 
     if (cache) {
       setData(JSON.parse(cache))
