@@ -23,6 +23,9 @@ export default function ChartEnergy({
 }) {
   const chartOptions = useMemo<Highcharts.Options>(
     () => ({
+      accessibility: {
+        enabled: false,
+      },
       title: {
         text: 'Gráfico de Energía',
       },
