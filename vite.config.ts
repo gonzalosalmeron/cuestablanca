@@ -10,5 +10,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src/'),
     },
   },
-  base: 'https://gonzalosalmeron.github.io/cuestablanca',
+  base: '/cuestablanca/',
 })

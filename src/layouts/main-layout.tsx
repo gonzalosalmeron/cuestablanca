@@ -36,7 +36,7 @@ export default function MainLayout({
           <div className='width-layout flex items-center justify-between'>
             <div className='flex items-center gap-2'>
               <img
-                src='/cuestablanca.png'
+                src='cuestablanca.png'
                 alt='Cuestablanca'
                 className='h-10 mix-blend-multiply'
               />
