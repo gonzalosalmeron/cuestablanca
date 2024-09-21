@@ -1,7 +1,9 @@
 import { useState } from 'react'
 
 import { SvgSpinner } from './libs/icons'
-import { API_URL, useFetcher } from './libs/utils'
+import { API_URL } from './libs/utils'
+
+import useFetcher from '@/hooks/use-fetcher'
 
 import ChartEnergy from '@/components/chart-energy'
 import ChartTypePicker from '@/components/chart-type-picker'
