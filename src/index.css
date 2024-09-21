@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 label {
-  @apply flex flex-col text-sm text-gray-600;
+  @apply flex w-full flex-col text-sm text-gray-600;
 }
 
 input,

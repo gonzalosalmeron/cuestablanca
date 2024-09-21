@@ -68,7 +68,7 @@ export default function MainLayout({
           </div>
         </nav>
         <nav className='border-b bg-white py-2'>
-          <div className='width-layout flex items-center gap-2'>
+          <div className='width-layout flex items-center gap-2 overflow-x-auto'>
             {menus.map(({ name, icon }, i) => (
               <button
                 key={i}

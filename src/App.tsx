@@ -38,7 +38,7 @@ function App() {
 
       <div className='rounded-xl border bg-white px-6 pb-9 pt-4'>
         <h4 className='mb-6 text-base font-medium'>Datos históricos</h4>
-        <div className='flex flex-wrap items-end gap-6'>
+        <div className='flex flex-col items-end gap-6 xl:flex-row'>
           <DatePicker dates={dates} setDates={setDates} />
           <DataFrecuence originalData={apiResponse} setNewData={setData} />
           <ValuePicker value={value} setValue={setValue} />
@@ -51,7 +51,7 @@ function App() {
             disabled={
               loading || !dates.from || !dates.to || !value || !chartType
             }
-            className='flex h-fit items-center gap-2 bg-green-600 px-4 py-2 text-green-50 disabled:cursor-not-allowed disabled:opacity-90'
+            className='flex h-fit shrink-0 items-center gap-2 bg-green-600 px-4 py-2 text-green-50 disabled:cursor-not-allowed disabled:opacity-90'
           >
             Generar Gráfico {loading && <SvgSpinner />}
           </button>

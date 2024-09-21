@@ -8,7 +8,7 @@ export default function DatePicker({
   setDates: React.Dispatch<SetStateAction<Dates>>
 }) {
   return (
-    <div className='flex gap-6'>
+    <div className='flex w-full gap-6'>
       <label>
         Desde
         <input
